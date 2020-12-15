@@ -27,12 +27,14 @@ public class Sistema {
 	private Sistema() {}
 	
 	/**
+	 * <b>Post: </b> El atributo instancia tiene una referencia a la única instancia de tipo Sistema.<br>
 	 * Metodo estático para instanciar por única vez Sistema
 	 * @return devuelve la instancia de tipo Sistema
 	 */
 	public static Sistema getInstancia() { 
 		if(instancia==null)
 			instancia= new Sistema();
+		assert (instancia != null):"Post: El atributo instancia es null.";
 		return instancia;
 	}
 
@@ -141,10 +143,20 @@ public class Sistema {
 		}
 	}
 	/**
+	 * <b>Invariante de clase: </b> El atributo listaFacturas es distinto de null.<br>
+	 * <b>Pre: </b> El parametro persona es distinto de null.<br>
+	 * <b>Pre: </b> El parametro persona es distinto de cadena vacia.<br>
+	 * <b>Pre: </b> El atributo listaFacturas contiene la clave persona.<br>
+	 * <b>Post: </b> El atributo totalConP de la factura correspondiente a la persona pasada por parametro queda actualizado.<br>
+	 * 
 	 * @param persona: Parametro de tipo String que representa al abonado que desee listar su factura, distinto de cadena vacia
 	 * @return Devuelve String que imprime la factura de un abonado
 	 */
 	public String listarFactura(String persona) {
+		this.validarInvariantesDeClase();
+		assert (persona != null):"Pre: El parámetro persona es igual a null";
+		assert (!persona.isEmpty()):"Pre: El parámetro persona es igual a cadena vacia";
+		assert (this.listaFacturas.containsKey(persona)):"Pre: El atributo listaFacturas no contiene la persona pasada por parámetro.";
 		StringBuilder sb= new StringBuilder();
 		this.listaFacturas.get(persona).actualizaPrecio();
 		sb.append(this.listaFacturas.get(persona).getPersona().toString()+"\n");
@@ -156,6 +168,8 @@ public class Sistema {
 			sb.append("\n-->PRECIO TOTAL SIN DESCUENTO: "+ this.listaFacturas.get(persona).getTotalSinP()+ "\n\n");
 			sb.append("\n-->PRECIO TOTAL CON DESCUENTO: "+ this.listaFacturas.get(persona).getTotalConP() + "\n\n");
 		}
+		assert (this.listaFacturas.get(persona).getTotalConP() != 0):"Post: El atributo totalConP no se actualizó.";
+		this.validarInvariantesDeClase();
 		return sb.toString();
 	}
 	/**
@@ -177,5 +191,8 @@ public class Sistema {
 		return sb.toString();
 	}
 
-	
+	private void validarInvariantesDeClase()
+	{
+		assert (this.listaFacturas != null):"Invariante: La lista de facturas es null";
+	}
 }
