@@ -50,50 +50,57 @@ public abstract class DecoratorAgregado implements I_Contratable {
      * @return : Su implementación debe retornar el precio del servicio
      * 
      */
-	
-    public abstract double getPrecio();
+    @Override
+  	public abstract double getPrecio();
    
     /**
      *
      * @return : Su implementación debe retornar la ID del servicio
      */
-    public abstract int getID();
+    @Override
+	public abstract int getID();
        
     /**
      *
      * @return : Su implementación debe retornar el Domicilio
      */
-    public abstract Domicilio getDomicilio();
+    @Override
+	public abstract Domicilio getDomicilio();
      
     /**
      *
      * @return : Su implementación debe retornar si es un servicio de Interner100
      */
-    public abstract boolean isInternet100();
+    @Override
+	public abstract boolean isInternet100();
 
     /**
      *
      * @return : Su implentación debe retornar si es un servicio de Internet500
      */
-    public abstract boolean isInternet500();
+    @Override
+	public abstract boolean isInternet500();
         
     /**
      *
      * @return : Su implentación debe retornar si es un servicio de Celular
      */
-    public abstract boolean isCelular();
+    @Override
+	public abstract boolean isCelular();
 
     /**
      *
      * @return : Su implementación debe retornar si es un servicio de teléfono
      */
-    public abstract boolean isTelefono();
+    @Override
+	public abstract boolean isTelefono();
 
     /**
      *
      * @return : Su implementación debe retornar si es un servicio de TV_Cable
      */
-        public abstract boolean isTV_Cable();
+        @Override
+	public abstract boolean isTV_Cable();
 	
 	/**
 	 * @return Devuelve un clon del Agregado. Estos siempre son clonables

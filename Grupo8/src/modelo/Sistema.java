@@ -1,11 +1,12 @@
 package modelo;
 
 import java.util.HashMap;
+
+import agregado.ContratableFactory;
 import excepciones.DomicilioInvalidoException;
 import excepciones.PersonaExistenteException;
 import excepciones.ServicioInternetInvalidoException;
 import interfaces.I_Pago;
-import agregado.ContratableFactory;
 import personas.Persona;
 import servicios.Domicilio;
 import servicios.Factura;
