@@ -118,7 +118,6 @@ public class Sistema {
 		try {
 			facturaDuplicada=(Factura) facturaOriginal.clone();
 			System.out.println("FACTURA DUPLICADA: \n"+this.listarFactura(facturaDuplicada.getPersona().getNombre()));
-			
 		} catch (CloneNotSupportedException e) {
 			System.out.println("Error al clonar, la persona es juridica");
 		}
