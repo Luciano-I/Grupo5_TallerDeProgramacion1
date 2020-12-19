@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import agregado.ContratableFactory;
 import excepciones.DomicilioInvalidoException;
@@ -193,5 +194,9 @@ public class Sistema {
 	private void validarInvariantesDeClase()
 	{
 		assert (this.listaFacturas != null):"Invariante: La lista de facturas es null";
+	}
+
+	public HashMap<String,Factura> getlista() {
+		return this.listaFacturas;
 	}
 }
