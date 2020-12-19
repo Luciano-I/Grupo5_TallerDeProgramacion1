@@ -33,7 +33,7 @@ public class TestFacturaConDatos {
 		int posicion;
 		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
 		posicion=EFD.getFactura().buscaContratacion("Magallanes 1212");
-		Assert.assertEquals("Magallanes 1212", EFD.getFactura().getListaContrataciones().get(posicion).getDomicilio().getDireccion());
+		Assert.assertEquals(1, posicion);
 	}
 
 }
