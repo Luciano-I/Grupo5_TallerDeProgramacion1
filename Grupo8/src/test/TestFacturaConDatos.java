@@ -11,7 +11,7 @@ import servicios.Factura;
 import personas.Fisica;
 import personas.Persona;
 
-public class TestFacturaSinDatos {
+public class TestFacturaConDatos {
 
 	@Before
 	public void setUp() throws Exception {
@@ -31,10 +31,8 @@ public class TestFacturaSinDatos {
 	@Test
 	public void testBuscaContratacion() {
 		int posicion;
-		Fisica persona=new Fisica("Jorge",31212515);
-		Factura factura=new Factura(persona);
-		
-		posicion=factura.buscaContratacion("Magallanes");
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		posicion=EFD.getFactura().buscaContratacion("Magallanes 1212");
 		
 	}
 
