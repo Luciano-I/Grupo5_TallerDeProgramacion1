@@ -27,35 +27,25 @@ public class TestServicio {
 	public void testConstructorInternet100() {
 		Domicilio domicilio=new DomicilioCasa("asafas",1212);
 		Servicio servicio=new Internet100(domicilio);
-
 		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet100", domicilio, servicio.getDomicilio());
-	}
-	
-	@Test
-	public void testConstructor2Internet100() {
-		Domicilio domicilio=new DomicilioCasa("asafas",1212);
-		Servicio servicio=new Internet100(domicilio, 5);
-		int id=servicio.getID();
-		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet100", domicilio, servicio.getDomicilio());
+		
+		Servicio servicio2=new Internet100(domicilio, 5);
+		int id=servicio2.getID();
+		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet100", domicilio, servicio2.getDomicilio());
 		Assert.assertEquals("El id se creo correctamente en internet100", 5, id);
 	}
 	
+
 	@Test
 	public void testConstructorInternet500() {
 		Domicilio domicilio=new DomicilioCasa("asafas",1212);
 		Servicio servicio=new Internet500(domicilio);
-
 		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet500", domicilio, servicio.getDomicilio());
-	}
-	
-	
-	@Test
-	public void testConstructor2Internet500() {
-		Domicilio domicilio=new DomicilioCasa("asafas",1212);
-		Servicio servicio=new Internet500(domicilio, 5);
-		int id=servicio.getID();
-		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet100", domicilio, servicio.getDomicilio());
-		Assert.assertEquals("El id se creo correctamente en internet100", 5, id);
+		
+		Servicio servicio2=new Internet500(domicilio, 5);
+		int id=servicio2.getID();
+		Assert.assertEquals("El domicilio se creo correctamente en el Servicio de internet500", domicilio, servicio2.getDomicilio());
+		Assert.assertEquals("El id se creo correctamente en internet500", 5, id);
 	}
 	
 	
