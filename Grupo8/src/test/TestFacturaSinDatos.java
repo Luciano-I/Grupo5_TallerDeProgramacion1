@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ import servicios.Factura;
 import personas.Fisica;
 import personas.Persona;
 
-public class TestFactura {
+public class TestFacturaSinDatos {
 
 	@Before
 	public void setUp() throws Exception {
@@ -24,6 +25,17 @@ public class TestFactura {
 	public void testConstructor() {
 		Fisica persona=new Fisica("Jorge",31212515);
 		Factura factura=new Factura(persona);
+		Assert.assertEquals(persona, factura.getPersona());
+	}
+	
+	@Test
+	public void testBuscaContratacion() {
+		int posicion;
+		Fisica persona=new Fisica("Jorge",31212515);
+		Factura factura=new Factura(persona);
+		
+		posicion=factura.buscaContratacion("Magallanes");
+		
 	}
 
 }
