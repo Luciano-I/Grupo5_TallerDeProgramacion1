@@ -14,10 +14,11 @@ public class EscenarioFacturaConDatos {
 	{
 		factura=new Factura(new Fisica("Jorge",14125235));
 		Internet500 internet500=new Internet500(new DomicilioCasa("assdfaf",1245));
-		Internet100 internet100=new Internet100(new DomicilioCasa("Magallanes",1212));
+		Internet100 internet100=new Internet100(new DomicilioCasa("hola",1212));
+		
 		factura.nuevaContratacion(internet500);
 		factura.nuevaContratacion(internet100);
-		factura.nuevaContratacion(new Celular(3, internet100));
+		
 	}
 
 	public Factura getFactura() {
