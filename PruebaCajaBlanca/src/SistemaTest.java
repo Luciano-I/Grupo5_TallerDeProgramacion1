@@ -1,5 +1,3 @@
-package modelo;
-
 import agregado.ContratableFactory;
 import agregado.DecoratorAgregado;
 import interfaces.I_Contratable;
