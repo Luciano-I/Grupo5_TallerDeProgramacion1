@@ -28,6 +28,25 @@ public class TestPersonaFisica {
 		Assert.assertEquals("Jorge", persona.getNombre());
 		Assert.assertEquals(31355235, persona.getDNI());
 	}
+	
+	@Test
+	public void testConstructorNombreNull() {
+		Fisica persona=new Fisica(null, 31355235);
+		String nombre=persona.getNombre();
+		int dni=persona.getDNI();
+		Assert.assertEquals(null, persona.getNombre());
+		Assert.assertEquals(31355235, persona.getDNI());
+	}
+	
+	@Test
+	public void testConstructorNombreVacio() {
+		Fisica persona=new Fisica("", 31355235);
+		String nombre=persona.getNombre();
+		int dni=persona.getDNI();
+		Assert.assertEquals("", persona.getNombre());
+		Assert.assertEquals(31355235, persona.getDNI());
+	}
+	
 
 	@Test
 	public void TestSetDNI() {
@@ -35,6 +54,30 @@ public class TestPersonaFisica {
 		persona.setDNI(32455236);
 		int dni=persona.getDNI();
 		Assert.assertEquals(32455236, dni);
+	}
+	
+	@Test
+	public void TestSetNombre() {
+		Fisica persona=new Fisica("Jorge", 31355235);
+		persona.setNombre("Jorge");
+		String nombre=persona.getNombre();
+		Assert.assertEquals("Jorge", nombre);
+	}
+	
+	@Test
+	public void TestSetNombreNull() {
+		Fisica persona=new Fisica(null, 31355235);
+		persona.setNombre(null);
+		String nombre=persona.getNombre();
+		Assert.assertEquals(null, nombre);
+	}
+	
+	@Test
+	public void TestSetNombreVacio() {
+		Fisica persona=new Fisica("", 31355235);
+		persona.setNombre("");
+		String nombre=persona.getNombre();
+		Assert.assertEquals("", nombre);
 	}
 	
 }
