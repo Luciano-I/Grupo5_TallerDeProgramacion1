@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import agregado.Celular;
+import agregado.Telefono;
 import servicios.DomicilioCasa;
 import servicios.Internet100;
 
-public class TestCelular {
+public class TestTelefono {
 
-	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -25,24 +25,25 @@ public class TestCelular {
 	@Test
 	public void testConstructor() {
 		Internet100 i100=new Internet100(new DomicilioCasa("asafa",1212));
-		Celular cel=new Celular(3, i100);
-		Assert.assertEquals(3, cel.getCantLineas());
-		Assert.assertEquals(i100, cel.getContratable());
+		Telefono tel=new Telefono(3, i100);
+		Assert.assertEquals(3, tel.getCantLineas());
+		Assert.assertEquals(i100, tel.getContratable());
 	}
 	
 	@Test
 	public void testConstructorNULL() {
-		Celular cel=new Celular(3, null);
-		Assert.assertEquals(3, cel.getCantLineas());
-		Assert.assertEquals(null, cel.getContratable());
+		Telefono tel=new Telefono(3, null);
+		Assert.assertEquals(3, tel.getCantLineas());
+		Assert.assertEquals(null, tel.getContratable());
 	}
 
 	@Test
 	public void testSetCantLineas() {
 		Internet100 i100=new Internet100(new DomicilioCasa("asafa",1212));
-		Celular cel=new Celular(3, i100);
-		cel.setCantLineas(5);
-		Assert.assertEquals(5, cel.getCantLineas());
+		Telefono tel=new Telefono(3, i100);
+		tel.setCantLineas(5);
+		Assert.assertEquals(5, tel.getCantLineas());
 	}
+
 
 }
