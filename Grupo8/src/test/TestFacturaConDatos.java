@@ -10,6 +10,7 @@ import org.junit.Test;
 import servicios.DomicilioCasa;
 import servicios.Factura;
 import servicios.Internet100;
+import servicios.Internet500;
 import personas.Fisica;
 import personas.Persona;
 
@@ -56,6 +57,8 @@ public class TestFacturaConDatos {
 	
 	@Test
 	public void testModificaContratacion() {
-		
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		EFD.getFactura().modificaContratacion(1, "CAMBIAR", "INTERNET500");
+		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
 	}
 }
