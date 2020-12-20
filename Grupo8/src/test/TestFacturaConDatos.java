@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import mediospagos.PagoEfectivo;
 import servicios.DomicilioCasa;
 import servicios.Factura;
 import servicios.Internet100;
@@ -56,9 +57,92 @@ public class TestFacturaConDatos {
 	}
 	
 	@Test
-	public void testModificaContratacion() {
+	public void testModificaContratacionCorrecto() {
 		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
 		EFD.getFactura().modificaContratacion(1, "CAMBIAR", "INTERNET500");
 		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
+	}
+	
+	@Test
+	public void testModificaContratacionAccionVacia() {
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		EFD.getFactura().modificaContratacion(1, "", "INTERNET500");
+		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
+	}
+	
+	@Test
+	public void testModificaContratacionAccionNULL() {
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		EFD.getFactura().modificaContratacion(1, null, "INTERNET500");
+		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
+	}
+	
+	@Test
+	public void testModificaContratacionServicioVacia() {
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		EFD.getFactura().modificaContratacion(1, "CAMBIAR", "");
+		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
+	}
+	
+	@Test
+	public void testModificaContratacionServicioNULL() {
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		EFD.getFactura().modificaContratacion(1, "CAMBIAR", null);
+		Assert.assertEquals(Internet500.class, EFD.getFactura().getListaContrataciones().get(1).getClass());
+	}
+	
+	@Test
+	public void testPrecioFinalValido() {
+		EscenarioFacturaConDatos EFD=new EscenarioFacturaConDatos();
+		PagoEfectivo efect=new PagoEfectivo();
+		EFD.getFactura().precioFinal(EFD.getFactura().getPersona(), efect);
+		Boolean precioEx=true;
+		Boolean precioAct=EFD.getFactura().getTotalSinP()>0;
+		Assert.assertEquals(precioEx, precioAct);
+	}
+	
+	@Test
+	public void testPrecioFinalPersonaNULL() {
+		Factura factura=new Factura(new Fisica("Jorge",14125235));
+		Internet500 internet500=new Internet500(new DomicilioCasa("assdfaf",1245));
+		Internet100 internet100=new Internet100(new DomicilioCasa("hola",1212));
+		
+		factura.nuevaContratacion(internet500);
+		factura.nuevaContratacion(internet100);
+		PagoEfectivo efect=new PagoEfectivo();
+		factura.precioFinal(null, efect);
+		Boolean precioEx=true;
+		Boolean precioAct=factura.getTotalSinP()>0;
+		Assert.assertEquals(precioEx, precioAct);
+	}
+	
+	@Test
+	public void testPrecioFinalPersonaNULLTipoNULL() {
+		Factura factura=new Factura(new Fisica("Jorge",14125235));
+		Internet500 internet500=new Internet500(new DomicilioCasa("assdfaf",1245));
+		Internet100 internet100=new Internet100(new DomicilioCasa("hola",1212));
+		
+		factura.nuevaContratacion(internet500);
+		factura.nuevaContratacion(internet100);
+		
+		factura.precioFinal(null, null);
+		Boolean precioEx=true;
+		Boolean precioAct=factura.getTotalSinP()>0;
+		Assert.assertEquals(precioEx, precioAct);
+	}
+	
+	@Test
+	public void testPrecioFinalTipoNULL() {
+		Factura factura=new Factura(new Fisica("Jorge",14125235));
+		Internet500 internet500=new Internet500(new DomicilioCasa("assdfaf",1245));
+		Internet100 internet100=new Internet100(new DomicilioCasa("hola",1212));
+		
+		factura.nuevaContratacion(internet500);
+		factura.nuevaContratacion(internet100);
+		PagoEfectivo efect=new PagoEfectivo();
+		factura.precioFinal(factura.getPersona(), null);
+		Boolean precioEx=true;
+		Boolean precioAct=factura.getTotalSinP()>0;
+		Assert.assertEquals(precioEx, precioAct);
 	}
 }
